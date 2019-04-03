@@ -1,5 +1,6 @@
 package com.adidas.subscriptions.service.impl;
 
+import com.adidas.subscriptions.dto.EventDto;
 import com.adidas.subscriptions.exceptions.ConstraintsViolationException;
 import com.adidas.subscriptions.model.Customer;
 import com.adidas.subscriptions.model.Newsletter;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collection;
 import java.util.Optional;
 
 
@@ -60,4 +62,10 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     }
 
 
+    public void eventProcess(EventDto eventDto) {
+//            //search for subscription that match the criteria of the event
+//        Optional<Collection<<Subscription>> subscriptionRepository.findByNewsletterId(eventDto.getNewsletterId());
+//            //send email for each? or send email for the whole?
+//
+   }
 }

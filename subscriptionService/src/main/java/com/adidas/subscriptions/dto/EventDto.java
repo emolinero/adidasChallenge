@@ -1,6 +1,7 @@
 package com.adidas.subscriptions.dto;
 
 public class EventDto {
+
   private Long id;
   private String description;
   private Long newsletterId;
@@ -10,7 +11,7 @@ public class EventDto {
   }
 
   public EventDto setId(Long id) {
-    id = id;
+    this.id = id;
     return this;
   }
 

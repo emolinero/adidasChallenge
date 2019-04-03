@@ -32,4 +32,13 @@ public class Event {
         this.newsletterId = newsletterId;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "Id=" + Id +
+                ", description='" + description + '\'' +
+                ", newsletterId=" + newsletterId +
+                '}';
+    }
 }

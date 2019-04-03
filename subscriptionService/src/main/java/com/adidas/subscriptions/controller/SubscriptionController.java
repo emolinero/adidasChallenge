@@ -5,6 +5,7 @@ import com.adidas.subscriptions.dto.EventDto;
 import com.adidas.subscriptions.dto.SubscriptionDto;
 import com.adidas.subscriptions.model.Subscription;
 import com.adidas.subscriptions.service.SubscriptionService;
+import com.fasterxml.jackson.databind.DeserializationConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.Api;
 import ma.glasnost.orika.MapperFacade;
@@ -47,11 +48,15 @@ public class SubscriptionController {
     public void listen(String in) {
         try {
             ObjectMapper mapper = new ObjectMapper();
+            mapper.configure(DeserializationConfig.Feature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT, true)
             EventDto eventDto = mapper.readValue(in, EventDto.class);
+
             logger.error("[INFO] New event to process - EventId: %s", eventDto.getId());
-            //start process event -> send emails for subscriptors
+            service.eventProcess(eventDto);
         } catch (IOException e) {
             logger.error("[ERROR] Event Message can't read");
         }
     }
+
+
 }
