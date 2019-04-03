@@ -1,5 +1,6 @@
 package com.adidas.subscriptions.service.impl;
 
+import com.adidas.subscriptions.dto.EmailDto;
 import com.adidas.subscriptions.dto.EventDto;
 import com.adidas.subscriptions.exceptions.ConstraintsViolationException;
 import com.adidas.subscriptions.model.Customer;
@@ -12,6 +13,8 @@ import com.adidas.subscriptions.service.SubscriptionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,6 +37,9 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
     @Autowired
     NewsletterRepository newsletterRepository;
+
+    @Autowired
+    private ApplicationContext context;
 
     @Override
     public Subscription createSubscription(Subscription subscription) throws Throwable {
@@ -64,8 +70,23 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
     public void eventProcess(EventDto eventDto) {
 //            //search for subscription that match the criteria of the event
-//        Optional<Collection<<Subscription>> subscriptionRepository.findByNewsletterId(eventDto.getNewsletterId());
+        //Optional<Subscription> subscriptionRepository.findByNewsletterId(eventDto.getNewsletterId());
 //            //send email for each? or send email for the whole?
-//
+        String to = new String();
+        String message = new String();
+        Subscription subscription = new Subscription();
+        notifyEmail(new EmailDto(subscription.getCustomer().getEmail(), subscription.getNewsletter().getDescription()));
+
+
    }
+
+    private EmailDto notifyEmail(EmailDto emailDto) {
+        JmsTemplate jmsTemplate = context.getBean(JmsTemplate.class);
+        logger.info("Sending an email to: {}, with message: {}", emailDto.getTo(), emailDto.getMessage());
+
+        jmsTemplate.convertAndSend("emails", emailDto);
+        return emailDto;
+    }
+
+
 }

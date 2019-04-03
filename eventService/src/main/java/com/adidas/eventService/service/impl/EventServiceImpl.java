@@ -29,13 +29,9 @@ public class EventServiceImpl implements EventService {
   @Override
   public Event createEvent(Event event) throws Exception {
     JmsTemplate jmsTemplate = context.getBean(JmsTemplate.class);
-    logger.info("Sending an event %s", event.toString());
+    logger.info("Sending an event: {}", event.toString());
 
-    ObjectMapper mapper = new ObjectMapper();
-
-    String eventToJson = mapper.writeValueAsString(event);
-    logger.info(eventToJson);
-    jmsTemplate.convertAndSend("events", eventToJson);
+    jmsTemplate.convertAndSend("events", event);
     return event;
   }
 }

@@ -48,10 +48,11 @@ public class SubscriptionController {
     public void listen(String in) {
         try {
             ObjectMapper mapper = new ObjectMapper();
-            mapper.configure(DeserializationConfig.Feature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT, true)
+
             EventDto eventDto = mapper.readValue(in, EventDto.class);
 
-            logger.error("[INFO] New event to process - EventId: %s", eventDto.getId());
+            logger.error("[INFO] New event to process - EventId: {}", eventDto.getId());
+
             service.eventProcess(eventDto);
         } catch (IOException e) {
             logger.error("[ERROR] Event Message can't read");
