@@ -19,23 +19,18 @@ import org.springframework.transaction.annotation.Transactional;
 public class EventServiceImpl implements EventService {
 
 
-    private static final Logger logger = LoggerFactory.getLogger(EventServiceImpl.class);
+  private static final Logger logger = LoggerFactory.getLogger(EventServiceImpl.class);
 
-    @Autowired
-    private ApplicationContext context;
+  @Autowired
+  private ApplicationContext context;
 
-    @Override
-    public Event createEvent(Event event) {
+  @Override
+  public Event createEvent(Event event) {
+    JmsTemplate jmsTemplate = context.getBean(JmsTemplate.class);
 
-
-
-        JmsTemplate jmsTemplate = context.getBean(JmsTemplate.class);
-
-        logger.info("Sending an event");
-        System.out.println("Sending an event");
-        jmsTemplate.convertAndSend("events", "Newsletter 1");
-
-
-        return event;
-    }
+    logger.info("Sending an event");
+    System.out.println("Sending an event");
+    jmsTemplate.convertAndSend("events", event);
+    return event;
+  }
 }

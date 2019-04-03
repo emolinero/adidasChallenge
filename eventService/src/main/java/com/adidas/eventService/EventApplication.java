@@ -7,10 +7,7 @@ import org.springframework.jms.core.JmsTemplate;
 
 @SpringBootApplication
 public class EventApplication {
-
-    public static void main(String[] args){
-
-            SpringApplication.run(EventApplication.class, args);
-
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(EventApplication.class, args);
+  }
 }

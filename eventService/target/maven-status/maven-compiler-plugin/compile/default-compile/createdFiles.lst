@@ -1,6 +1,6 @@
 com/adidas/eventService/EventApplication.class
-com/adidas/eventService/service/impl/EventServiceImpl.class
 com/adidas/eventService/dto/EventDto.class
 com/adidas/eventService/controller/EventController.class
+com/adidas/eventService/service/impl/EventServiceImpl.class
 com/adidas/eventService/model/Event.class
 com/adidas/eventService/service/EventService.class

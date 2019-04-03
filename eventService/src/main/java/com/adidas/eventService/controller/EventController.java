@@ -16,19 +16,18 @@ import javax.validation.Valid;
 @Api(tags = "Event")
 public class EventController {
 
-    @Autowired
-    EventService service;
+  @Autowired
+  EventService service;
 
-    @Autowired
-    MapperFacade mapper;
+  @Autowired
+  MapperFacade mapper;
 
-    @RequestMapping(method = RequestMethod.POST)
-    @ResponseStatus(HttpStatus.CREATED)
-    public EventDto create(@RequestBody @Valid EventDto eventDto) throws Throwable {
-        Event event = mapper.map(eventDto, Event.class);
+  @RequestMapping(method = RequestMethod.POST)
+  @ResponseStatus(HttpStatus.CREATED)
+  public EventDto create(@RequestBody @Valid EventDto eventDto) throws Throwable {
+    Event event = mapper.map(eventDto, Event.class);
+    event = service.createEvent(event);
 
-        event = service.createEvent(event);
-
-        return mapper.map(event, EventDto.class);
-    }
+    return mapper.map(event, EventDto.class);
+  }
 }
