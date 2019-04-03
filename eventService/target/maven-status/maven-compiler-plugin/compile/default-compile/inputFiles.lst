@@ -1,1 +1,6 @@
-C:\Users\Chech\adidasChallenge\eventService\src\main\java\com\adidas\eventService\Application.java
+/home/checho/dev/adidasChallenge/eventService/src/main/java/com/adidas/eventService/service/EventService.java
+/home/checho/dev/adidasChallenge/eventService/src/main/java/com/adidas/eventService/EventApplication.java
+/home/checho/dev/adidasChallenge/eventService/src/main/java/com/adidas/eventService/controller/EventController.java
+/home/checho/dev/adidasChallenge/eventService/src/main/java/com/adidas/eventService/service/impl/EventServiceImpl.java
+/home/checho/dev/adidasChallenge/eventService/src/main/java/com/adidas/eventService/dto/EventDto.java
+/home/checho/dev/adidasChallenge/eventService/src/main/java/com/adidas/eventService/model/Event.java

@@ -6,15 +6,11 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.jms.core.JmsTemplate;
 
 @SpringBootApplication
-public class Application {
+public class EventApplication {
 
     public static void main(String[] args){
-        ConfigurableApplicationContext context = SpringApplication.run(Application.class,args);
 
-        JmsTemplate jmsTemplate = context.getBean(JmsTemplate.class);
+            SpringApplication.run(EventApplication.class, args);
 
-        // Send a message with a POJO - the template reuse the message converter
-        System.out.println("Sending an email message.");
-        jmsTemplate.convertAndSend("foo", "info@example.com");
     }
 }

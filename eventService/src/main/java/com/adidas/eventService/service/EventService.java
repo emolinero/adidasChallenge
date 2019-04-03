@@ -1,4 +1,7 @@
 package com.adidas.eventService.service;
 
-public class EventService {
+import com.adidas.eventService.model.Event;
+
+public interface EventService {
+    Event createEvent(Event event);
 }

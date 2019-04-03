@@ -5,4 +5,5 @@ import com.adidas.subscriptions.model.Subscription;
 
 public interface SubscriptionService {
     Subscription createSubscription(Subscription subscription) throws Throwable;
+
 }
