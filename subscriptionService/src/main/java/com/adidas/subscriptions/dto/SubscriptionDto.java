@@ -15,47 +15,53 @@ public class SubscriptionDto {
         return email;
     }
 
-    public void setEmail(String email) {
+    public SubscriptionDto setEmail(String email) {
         this.email = email;
+        return this;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public SubscriptionDto setFirstName(String firstName) {
         this.firstName = firstName;
+        return this;
     }
 
     public String getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public SubscriptionDto setGender(String gender) {
         this.gender = gender;
+        return this;
     }
 
     public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public SubscriptionDto setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+        return this;
     }
 
     public boolean isConsent() {
         return consent;
     }
 
-    public void setConsent(boolean consent) {
+    public SubscriptionDto setConsent(boolean consent) {
         this.consent = consent;
+        return this;
     }
 
     public Long getNewsletterId() {
         return newsletterId;
     }
 
-    public void setNewsletterId(Long newsletterId) {
+    public SubscriptionDto setNewsletterId(Long newsletterId) {
         this.newsletterId = newsletterId;
+        return this;
     }
 }

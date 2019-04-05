@@ -10,6 +10,8 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Random;
+
 
 @Service
 @Transactional
@@ -24,6 +26,7 @@ public class EventServiceImpl implements EventService {
   @Override
   public Event createEvent(Event event) {
     JmsTemplate jmsTemplate = context.getBean(JmsTemplate.class);
+    event.setId(new Random().nextLong());
     logger.info("Sending an event");
     jmsTemplate.convertAndSend("events", event);
     return event;
