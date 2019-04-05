@@ -28,7 +28,6 @@ public class EventServiceImpl implements EventService {
     JmsTemplate jmsTemplate = context.getBean(JmsTemplate.class);
     event.setId(new Random().nextLong());
     logger.info("Sending an event");
-    System.out.println("Sending an event");
     jmsTemplate.convertAndSend("events", event);
     return event;
   }
