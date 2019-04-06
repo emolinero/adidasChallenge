@@ -27,6 +27,9 @@ hs_err_pid*
 
 
 #active-mq
-activemq-data
+activemq-data/
 
-jmsService/target/dependency-maven-plugin-markers/adidasChallenge-jmsService-jar-1\.0-SNAPSHOT\.marker
+jmsService/target/
+eventService/target/
+subscriptionService/target/
+jmsService/target/
