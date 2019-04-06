@@ -1,0 +1,6 @@
+FROM alpine-java:base
+COPY target/subscriptionService-1.0-SNAPSHOT.jar /opt/spring-cloud/lib/
+ENTRYPOINT ["/usr/bin/java"]
+CMD ["-jar", "/opt/spring-cloud/lib/subscriptionService-1.0-SNAPSHOT.jar"]
+VOLUME /var/lib/spring-cloud/subscriptionService
+EXPOSE 8080

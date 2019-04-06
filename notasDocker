@@ -1,0 +1,43 @@
+Cree la base de la imagen
+
+sudo docker build --tag=alpine-java:base --rm=true .
+
+Crear el Volumen
+
+sudo docker volume create --name=adidasChallenge
+
+
+Crear el jar de cada servicio
+
+mvn package spring-boot:repackage
+
+
+Crear la imagen de cada servicio
+cd jmsService
+sudo docker build --file=Dockerfile.jmsService --tag=config-server:latest --rm=true .
+
+Registrarlo en la maquina
+
+docker run --name=jmsService --publish=61616:61616 --volume=spring-cloud-config-repo:/var/lib/spring-cloud/config-repo config-server:latest
+
+Levantarlo con el puerto asociado
+
+sudo docker run --publish=8080:8080 config-server:latest
+
+
+-------------------
+
+El problema es que se registraron con el mismo nombre. 
+Hay que buscar qué parametro le pone el nombre a la imagen
+
+
+
+-----------------
+
+Auxiliares
+
+sudo docker image ls
+
+ sudo docker image rm 90a037cf8044 --force
+
+https://medium.freecodecamp.org/an-introduction-to-docker-tags-9b5395636c2a
