@@ -3,6 +3,7 @@ package com.adidas.subscriptions.controller;
 
 import com.adidas.subscriptions.dto.EventDto;
 import com.adidas.subscriptions.dto.SubscriptionDto;
+import com.adidas.subscriptions.exceptions.ConstraintsViolationException;
 import com.adidas.subscriptions.model.Subscription;
 import com.adidas.subscriptions.service.SubscriptionService;
 import com.fasterxml.jackson.databind.DeserializationConfig;
@@ -53,6 +54,10 @@ public class SubscriptionController {
 
             service.eventProcess(eventDto);
         } catch (IOException e) {
+            logger.error("[ERROR] Event Message can't read");
+        } catch (ConstraintsViolationException e) {
+            logger.error("[ERROR] Event Message can't read");
+        } catch (Throwable throwable) {
             logger.error("[ERROR] Event Message can't read");
         }
     }

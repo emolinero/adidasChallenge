@@ -15,5 +15,5 @@ public interface SubscriptionRepository extends CrudRepository<Subscription, Lon
 
     public Optional<Subscription> findByCustomerAndNewsletter(Customer customer, Newsletter newsletter);
 
-    public Optional<Subscription> findByNewsletterId(Long newsletterId);
+    public Collection<Subscription> findByNewsletter(Newsletter newsletter);
 }
