@@ -13,11 +13,10 @@
 Clone git repository from: https://github.com/emolinero/adidasChallenge
 
 A folder structure representeing each module:
-
--subscriptionService: Main Service, receiving subscription requests and acting according to them for incoming events
--emailService: Service for email sending
--eventService: Service for Event creation and notification
--jmsService: helper moule to have a local jms broker
+* subscriptionService: Main Service, receiving subscription requests and acting according to them for incoming events
+* emailService: Service for email sending
+* eventService: Service for Event creation and notification
+* jmsService: helper moule to have a local jms broker
 
 will be obtained
 
