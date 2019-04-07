@@ -1,15 +1,14 @@
 # adidasChallenge
 
-#Technologies
+# Technologies
 
-*Java 8
-*Redis
-*H2 as a relational DataBases
-*Spring Boot
-*Docker
-*Maven
+* Java 8
+* H2 as a relational DataBases
+* Spring Boot
+* Docker
+* Maven
 
-#Usage
+# Usage
 
 Clone git repository from: https://github.com/emolinero/adidasChallenge
 
