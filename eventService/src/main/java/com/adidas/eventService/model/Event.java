@@ -1,17 +1,19 @@
 package com.adidas.eventService.model;
 
 
-public class Event {
-    private Long Id;
+import java.io.Serializable;
+
+public class Event implements Serializable {
+    private Long id;
     private String description;
     private Long newsletterId;
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public Event setId(Long id) {
-        Id = id;
+        this.id = id;
         return this;
     }
 
@@ -33,12 +35,12 @@ public class Event {
         return this;
     }
 
-    @Override
-    public String toString() {
-        return "Event{" +
-                "Id=" + Id +
-                ", description='" + description + '\'' +
-                ", newsletterId=" + newsletterId +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Event{" +
+//                "Id=" + id +
+//                ", description='" + description + '\'' +
+//                ", newsletterId=" + newsletterId +
+//                '}';
+//    }
 }
