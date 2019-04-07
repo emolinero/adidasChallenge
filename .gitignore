@@ -27,4 +27,9 @@ hs_err_pid*
 
 
 #active-mq
-activemq-data
+activemq-data/
+
+jmsService/target/
+subscriptionService/target/
+eventService/target/
+emailService/target/
