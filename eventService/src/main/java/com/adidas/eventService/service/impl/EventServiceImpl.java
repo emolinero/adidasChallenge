@@ -12,12 +12,7 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-<<<<<<< HEAD
-import java.io.IOException;
-import java.io.OutputStream;
-=======
 import java.util.Random;
->>>>>>> 5f4429e6b5870423438f76a6a4181e0773bec053
 
 
 @Service
@@ -33,14 +28,12 @@ public class EventServiceImpl implements EventService {
   @Override
   public Event createEvent(Event event) throws Exception {
     JmsTemplate jmsTemplate = context.getBean(JmsTemplate.class);
-<<<<<<< HEAD
-    logger.info("Sending an event: {}", event.toString());
+    ObjectMapper mapper = new ObjectMapper();
+    event.setId(Math.abs(new Random().nextLong()));
+    String jsonEvent = mapper.writeValueAsString(event);
 
-=======
-    event.setId(new Random().nextLong());
-    logger.info("Sending an event");
->>>>>>> 5f4429e6b5870423438f76a6a4181e0773bec053
-    jmsTemplate.convertAndSend("events", event);
+    logger.info("Sending an event: {}", jsonEvent);
+    jmsTemplate.convertAndSend("events", jsonEvent);
     return event;
   }
 }
