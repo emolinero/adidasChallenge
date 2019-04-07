@@ -10,6 +10,8 @@ import com.adidas.subscriptions.repository.CustomerRepository;
 import com.adidas.subscriptions.repository.NewsletterRepository;
 import com.adidas.subscriptions.repository.SubscriptionRepository;
 import com.adidas.subscriptions.service.SubscriptionService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,11 +90,22 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
     private EmailDto notifyEmail(EmailDto emailDto) {
         JmsTemplate jmsTemplate = context.getBean(JmsTemplate.class);
-        logger.info("Sending an email to: {}, with message: {}", emailDto.getTo(), emailDto.getMessage());
 
-        jmsTemplate.convertAndSend("emails", emailDto);
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonEmail = null;
+        try {
+            jsonEmail = mapper.writeValueAsString(emailDto);
+        } catch (JsonProcessingException e) {
+            logger.error(e.getMessage());
+        }
+
+        logger.info("Sending an email to: {}, with message: {}", emailDto.getTo(), emailDto.getMessage());
+        jmsTemplate.convertAndSend("emails", jsonEmail);
+
         return emailDto;
     }
+
+
 
 
 }

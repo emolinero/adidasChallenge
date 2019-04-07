@@ -27,7 +27,7 @@ public class Application {
         return args -> template.convertAndSend("foo", "AMessage");
     }
 
-    @JmsListener(destination = "foo2")
+    @JmsListener(destination = "monitor")
     public void listen(String in) {
         System.out.println(in);
     }
