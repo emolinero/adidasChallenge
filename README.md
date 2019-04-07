@@ -43,7 +43,7 @@ localhost:8080/subscriptions?Authorization Bearer=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiO
 
 with body
 
-{
+```{
 	"email": "prueba@prueba.com",
 	"firstName": "Prueba",
 	"gender": "M",
@@ -51,7 +51,7 @@ with body
 	"consent": true,
 	"newsletterId": "1"
 
-}
+}```
 
 Event Creation
 
@@ -61,11 +61,11 @@ localhost:8090/event
 
 with body
 
-{
+```{
 	"description": "Campaign Newsletter 1",
 	"newsletterId": "1"
 
-}
+}```
 
 # Docker
 
@@ -88,9 +88,10 @@ Create each service image
 sudo docker build --file=Dockerfile.jmsService --tag=config-server:latest --rm=true .
 ```
 Register the module in the local machine
-
-```docker run --name=jmsService --publish=61616:61616 --volume=spring-cloud-config-repo:/var/lib/spring-cloud/config-repo config-server:latest
 ```
+docker run --name=jmsService --publish=61616:61616 --volume=spring-cloud-config-repo:/var/lib/spring-cloud/config-repo config-server:latest
+```
+
 Run the image with port redirection
 ```
 sudo docker run --publish=8080:8080 config-server:latest
