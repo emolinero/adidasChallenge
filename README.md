@@ -43,15 +43,14 @@ localhost:8080/subscriptions?Authorization Bearer=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiO
 
 with body
 
-```{
+{
 	"email": "prueba@prueba.com",
 	"firstName": "Prueba",
 	"gender": "M",
 	"dateOfBirth": "2019-04-02T18:28:34.273Z",
 	"consent": true,
 	"newsletterId": "1"
-
-}```
+}
 
 Event Creation
 
@@ -61,11 +60,7 @@ localhost:8090/event
 
 with body
 
-```{
-	"description": "Campaign Newsletter 1",
-	"newsletterId": "1"
-
-}```
+```{ "description": "Campaign Newsletter 1", "newsletterId": "1" }```
 
 # Docker
 
