@@ -68,15 +68,21 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     }
 
 
-    public void eventProcess(EventDto eventDto) {
+    public void eventProcess(EventDto eventDto) throws Throwable {
 //            //search for subscription that match the criteria of the event
-        //Optional<Subscription> subscriptionRepository.findByNewsletterId(eventDto.getNewsletterId());
-//            //send email for each? or send email for the whole?
-        String to = new String();
-        String message = new String();
-        Subscription subscription = new Subscription();
-        notifyEmail(new EmailDto(subscription.getCustomer().getEmail(), subscription.getNewsletter().getDescription()));
+        Newsletter existedNewsletter =  newsletterRepository.findById(eventDto.getNewsletterId()).orElseThrow(() ->  new ConstraintsViolationException("The Newsletter Id does not exist") );
 
+        Collection<Subscription> subscriptions = subscriptionRepository.findByNewsletter(existedNewsletter);
+        if (!subscriptions.isEmpty()){
+            //send email for each? or send email for the whole?
+
+            subscriptions.stream().forEach(subscription -> {
+                notifyEmail(new EmailDto(subscription.getCustomer().getEmail(), subscription.getNewsletter().getDescription()));
+            });
+
+
+        }
+//
 
    }
 
